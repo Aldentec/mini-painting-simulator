@@ -604,6 +604,7 @@ Transform:
   - {fileID: 1586940649}
   - {fileID: 982035418}
   - {fileID: 1918361011}
+  - {fileID: 1259386410}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &333022040
@@ -664,7 +665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7838617363818691298, guid: ce998c4ea10abbc4d85e78ab620da50e, type: 3}
       propertyPath: m_Name
-      value: Wall 2
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -965,6 +966,7 @@ GameObject:
   - component: {fileID: 506689521}
   - component: {fileID: 506689520}
   - component: {fileID: 506689524}
+  - component: {fileID: 506689525}
   m_Layer: 5
   m_Name: PaintingUI
   m_TagString: Untagged
@@ -1076,6 +1078,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b4f3a3495b20447489e9a7e411a92d89, type: 2}
   - {fileID: 11400000, guid: 988664c6a3c80414da4a637f4c033d98, type: 2}
   modelSelectionPanel: {fileID: 2029372572}
+  defaultModelType: 0
+--- !u!114 &506689525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506689519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c246460a42de1046b7c8e9890b3c03a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableDebugLogs: 1
 --- !u!1 &514930403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1795,7 +1811,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 335e031a7a414ba4bb788295ac47706b, type: 2}
+  - {fileID: 2100000, guid: c72c18a65c5a3ed4ead4b1b025a1a5d8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2150,8 +2166,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1217406883}
   - component: {fileID: 1217406882}
+  - component: {fileID: 1217406885}
+  - component: {fileID: 1217406884}
   m_Layer: 0
-  m_Name: PaintingSceneManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2185,6 +2203,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1217406884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217406881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93b47210cb2f3bd478dea88c6ecdb596, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateXKey: 120
+  rotateYKey: 121
+  rotateZKey: 122
+  resetKey: 114
+  manualRotationStep: 15
+  adjustForwardKey: 116
+  adjustBackwardKey: 103
+  adjustLeftKey: 102
+  adjustRightKey: 104
+  perfectUprightKey: 117
+--- !u!114 &1217406885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217406881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6687e2bd57981f439bfea8eea1f1fd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settings:
+    forceCharacterOrientation: 1
+    characterRotation: {x: 0, y: 180, z: 0}
+    uprightAdjustmentX: 0
+    uprightAdjustmentZ: 0
+    analyzeVerticalAlignment: 1
+    realTimeAdjustment: 1
+    fineAdjustmentStep: 0.5
+    enableDebugLogs: 1
+    showBoundsGizmo: 0
+    showOrientationArrows: 1
 --- !u!1 &1259386409
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,12 +2272,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1259386409}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.9508527, y: 1.3433642, z: -12.924222}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 312235221}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1322720000
 GameObject:
@@ -3823,4 +3886,3 @@ SceneRoots:
   - {fileID: 1217406883}
   - {fileID: 506689523}
   - {fileID: 312235221}
-  - {fileID: 1259386410}

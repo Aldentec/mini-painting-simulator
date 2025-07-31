@@ -236,9 +236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c976c69a8e41b0149bf78ad8784edf2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactDistance: 3
-  doorLayer:
-    m_Bits: 128
 --- !u!1001 &119714015
 PrefabInstance:
   m_ObjectHideFlags: 0
