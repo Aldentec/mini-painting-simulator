@@ -1,0 +1,38 @@
+# Unity generated files
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+
+# VS Code / Rider
+.vscode/
+.idea/
+
+# User settings
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+
+# Other
+*.apk
+*.aab
+.DS_Store
+*.swp
+
+# Auto-generated
+*.bak
+*.orig
+*.rej
+*.mdb
+
+# Crash logs
+*.log
