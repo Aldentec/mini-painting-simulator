@@ -29,6 +29,9 @@ A Unity-based game where players run a miniature painting shop. Paint 3D models 
 - Unity Editor (2021.3+ recommended)
 - Git installed on your machine
 
+### Third-Party Assets
+- [Free Casual Buttons Set](https://assetstore.unity.com/packages/2d/gui/free-casual-buttons-pack-307406)
+
 ### Clone the repo
 
 ```bash

@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public class PhoneUIManager : MonoBehaviour {
     [Header("Phone UI References")]
@@ -33,18 +34,8 @@ public class PhoneUIManager : MonoBehaviour {
     private GameObject currentScreen;
     private Stack<GameObject> screenHistory = new Stack<GameObject>();
 
-    // App data structure
-    [System.Serializable]
-    public class PhoneApp {
-        public string appName;
-        public Sprite appIcon;
-        public GameObject targetScreen;
-        public bool isUnlocked = true;
-        public Color iconColor = Color.white;
-    }
-
     [Header("Phone Apps")]
-    public List<PhoneApp> phoneApps = new List<PhoneApp>();
+    public List<AppIconSO> phoneApps = new List<AppIconSO>();
 
     // Events
     public static event Action<bool> OnPhoneToggled;
@@ -122,21 +113,16 @@ public class PhoneUIManager : MonoBehaviour {
         }
 
         // Create app buttons
-        foreach (PhoneApp app in phoneApps) {
-            Debug.Log($"Processing app: '{app.appName}', Unlocked: {app.isUnlocked}");
-            if (app.isUnlocked) {
-                Debug.Log($"Creating button for: {app.appName}");
-                CreateAppButton(app);
-            }
-            else {
-                Debug.Log($"App '{app.appName}' is locked, skipping");
-            }
+        foreach (AppIconSO app in phoneApps) {
+            Debug.Log($"Processing app: '{app.appName}'");
+            Debug.Log($"Creating button for: {app.appName}");
+            CreateAppButton(app);
         }
 
         Debug.Log("=== SetupApps() finished ===");
     }
 
-    void CreateAppButton(PhoneApp app) {
+    void CreateAppButton(AppIconSO app) {
         Debug.Log($"CreateAppButton called for: {app.appName}");
 
         GameObject appButton = Instantiate(appButtonPrefab, appContainer);
@@ -154,7 +140,7 @@ public class PhoneUIManager : MonoBehaviour {
 
         if (icon != null && app.appIcon != null) {
             icon.sprite = app.appIcon;
-            icon.color = app.iconColor;
+            icon.color = Color.white; // Default color since AppIconSO doesn't have iconColor
         }
 
         if (label != null) {
@@ -242,7 +228,7 @@ public class PhoneUIManager : MonoBehaviour {
         phoneCanvas.SetActive(false);
     }
 
-    void OpenApp(PhoneApp app) {
+    void OpenApp(AppIconSO app) {
         Debug.Log($"OpenApp called for: {app.appName}");
         Debug.Log($"Target screen is null: {app.targetScreen == null}");
 
@@ -297,19 +283,18 @@ public class PhoneUIManager : MonoBehaviour {
 
     // Public utility methods
     public void UnlockApp(string appName) {
-        PhoneApp app = phoneApps.Find(a => a.appName == appName);
+        AppIconSO app = phoneApps.FirstOrDefault(a => a.appName == appName);
         if (app != null) {
-            app.isUnlocked = true;
-            SetupApps(); // Refresh app buttons
-            Debug.Log($"Unlocked app: {appName}");
+            // Since AppIconSO doesn't have unlock state, we'll just log it
+            Debug.Log($"App unlocked (no-op for AppIconSO): {appName}");
         }
     }
 
     public void LockApp(string appName) {
-        PhoneApp app = phoneApps.Find(a => a.appName == appName);
+        AppIconSO app = phoneApps.FirstOrDefault(a => a.appName == appName);
         if (app != null) {
-            app.isUnlocked = false;
-            SetupApps(); // Refresh app buttons
+            // Since AppIconSO doesn't have lock state, we'll just log it
+            Debug.Log($"App locked (no-op for AppIconSO): {appName}");
         }
     }
 
@@ -322,12 +307,10 @@ public class PhoneUIManager : MonoBehaviour {
     }
 
     // Method to add new apps dynamically
-    public void AddApp(PhoneApp newApp) {
+    public void AddApp(AppIconSO newApp) {
         if (!phoneApps.Contains(newApp)) {
             phoneApps.Add(newApp);
-            if (newApp.isUnlocked) {
-                CreateAppButton(newApp);
-            }
+            CreateAppButton(newApp);
         }
     }
 }
